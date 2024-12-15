@@ -25,6 +25,7 @@ export class ProjectService {
           image: "/projet_argentBank.png",
           technologies: ["ReactJS", "Redux"],
           repositoryUrl: "https://github.com/Moulinator31/ArgentBank-website.git",
+          liveUrl: null,
         },
         {
           title: "Projet Kasa",
