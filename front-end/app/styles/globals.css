@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Polices personnalisées */
+.petit-formal-script-regular {
+  font-family: "Petit Formal Script", serif !important;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Effet sur les éléments de liste */
+ul li {
+  position: relative;
+  overflow: hidden;
+}
+
+ul li:active {
+  transform: scale(1.05);
+  transition: transform 0.1s;
+}
+
+ul li:active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #D8BFAA;
+  /* Couleur personnalisable */
+  animation: slideIn 0.3s ease;
+}
+
+/* Animation de l'effet de barre */
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* Thème sombre */
+:root {
+  --background: #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #e5e7eb;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Animations générales */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 1.5s ease-in-out forwards;
+}
+
+/* Animation d'apparition avec déplacement Y */
+@keyframes fadeInY {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-y {
+  animation: fadeInY 0.7s ease-in-out forwards;
+}
+
+/* Transition des slides */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Classes pour animations */
+.slide-in-right {
+  animation: slideInRight 0.7s ease-in-out;
+}
+
+.slide-out-left {
+  animation: slideOutLeft 0.7s ease-in-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.7s ease-in-out;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.7s ease-in-out;
+}
+
+/* Animation pour le nuage flottant */
+@keyframes clouds {
+  0% {
+    transform: translateX(-50px);
+  }
+
+  50% {
+    transform: translateX(50px);
+  }
+
+  100% {
+    transform: translateX(-50px);
+  }
+}
+
+.animate-clouds {
+  animation: clouds 2s infinite ease-in-out;
+}
+
+/* Animation du tournesol pulsant */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1s infinite;
+}
+/* Animation pour les bulles flottantes */
+@keyframes clouds {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-clouds {
+  animation: clouds 6s ease-in-out infinite alternate;
+}
+
+/* Animation pour le texte */
+@keyframes fadeInY {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-y {
+  animation: fadeInY 1s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 1.5s ease-in-out forwards;
+}
+
+/* Styles pour les boutons */
+.button-74 {
+  background-color: #E9D8C3; /* Beige clair */
+  border: 2px solid #b97a57; /* Marron chaud */
+  border-radius: 10px; /* Bordures moins arrondies */
+  box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.2); /* Ombre douce */
+  color: #b97a57; /* Texte marron */
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0 15px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button-74:hover {
+  background-color: #dec9b0; /* Beige plus foncé au survol */
+}
+
+.button-74:active {
+  box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.2);
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 100px;
+  }
+}
+
+
