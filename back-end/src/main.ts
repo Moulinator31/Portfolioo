@@ -16,7 +16,7 @@ async function bootstrap() {
     credentials: true, // Permet les cookies et les sessions
   });
 
-  const port = process.env.PORT || 3001;
+  const port = process.env.PORT || 8000;
   console.log(`Server running on http://localhost:${port}`);
   await app.listen(port);
 }
