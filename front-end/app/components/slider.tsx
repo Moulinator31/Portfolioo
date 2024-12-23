@@ -49,7 +49,6 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
       </button>
 
       <div
-        id="Mes projects"
         className={`carousel-slide w-full max-w-4xl overflow-hidden rounded-xl shadow-lg ${animationClass}`}
         onAnimationEnd={() => setAnimationClass("")}
       >
@@ -102,22 +101,22 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
               </a>
             )}
           </div>
-          </div>
-
-
         </div>
 
-        <button
-          onClick={nextSlide}
-          className="absolute right-5 z-10 p-2 bg-gray-800 rounded-full opacity-70 hover:opacity-100 text-white"
-        >
-          <FaArrowRight />
-        </button>
+
       </div>
-      );
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-5 z-10 p-2 bg-gray-800 rounded-full opacity-70 hover:opacity-100 text-white"
+      >
+        <FaArrowRight />
+      </button>
+    </div>
+  );
 };
 
-      export default Slider;
+export default Slider;
 
 
 

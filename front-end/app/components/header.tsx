@@ -28,7 +28,7 @@ function Header() {
         </li>
         <li className="relative group">
           <a
-            href="#Mes projets"
+            href="#mes-projets"
             className="relative text-[#333333] group-hover:text-[#b97a57] transition duration-300"
           >
             Mes projets

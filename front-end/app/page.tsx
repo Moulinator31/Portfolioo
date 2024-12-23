@@ -66,6 +66,8 @@ export default function Home() {
             {/* Image de présentation */}
             <div className="flex-shrink-0">
               <Image
+                width={500}
+                height={500}
                 src="/presentation_me.png"
                 alt="Photo d'Elsa"
                 className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-[#b97a57] hover:scale-105 transition-transform duration-300"
@@ -88,7 +90,7 @@ export default function Home() {
       </section>
 
 
-      <h2 className="text-center mt-12 text-[#333333] text-3xl petit-formal-script-regular animate-fade-in">
+      <h2 id="mes-projets" className="text-center mt-12 text-[#333333] text-3xl petit-formal-script-regular animate-fade-in">
         Mes Projets
       </h2>
       <Slider projects={projects} />
