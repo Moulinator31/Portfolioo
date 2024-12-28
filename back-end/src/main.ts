@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api/v1');  // Préfixe global pour toutes les routes
   app.enableCors({
-    origin: ['http://localhost:3000','https://portfolioo-22.vercel.app/'],  // Frontend URL
+    origin: ['https://portfolioo-22.vercel.app/','https://protection-barbee-elsa-tanguy-projects-1a18647e.koyeb.app'],  // Frontend URL
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept',
     credentials: true,
