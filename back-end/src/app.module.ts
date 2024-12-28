@@ -4,6 +4,7 @@ import { ProjectModule } from './project/project.module';
 import { FormationModule } from './formation/formation.module';
 import { ContactModule } from './contact/contact.module';
 import { ProjectService } from './project/project.service';
+import { AppController } from './app.controller';  // Importer le contrôleur
 
 @Module({
   imports: [
@@ -12,6 +13,8 @@ import { ProjectService } from './project/project.service';
     FormationModule,
     ContactModule,
   ],
+  controllers: [AppController],  // Ajouter le contrôleur ici
+  providers: [ProjectService],
 })
 export class AppModule implements OnModuleInit {
   constructor(private readonly projectService: ProjectService) {}
@@ -20,6 +23,7 @@ export class AppModule implements OnModuleInit {
     await this.projectService.seedData(); // Appel de la méthode seedData()
   }
 }
+
 
 
 
