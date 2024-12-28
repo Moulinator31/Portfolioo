@@ -7,7 +7,7 @@ import { ProjectService } from './project/project.service';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/portfolio_backend'),
+    MongooseModule.forRoot('mongodb+srv://Moulinator31:Moulinator31@cluster0.cczpi.mongodb.net/myDatabase'),
     ProjectModule,
     FormationModule,
     ContactModule,
