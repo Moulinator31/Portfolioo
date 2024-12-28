@@ -21,7 +21,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=mongodb://mongodb:27017/portfolio_backend
+      - DATABASE_URL=mongodb://localhost:27017/portfolio_backend
 
 networks:
   my-network:
@@ -29,3 +29,4 @@ networks:
 
 volumes:
   mongodb_data:
+
