@@ -77,7 +77,7 @@ export default function Home() {
             {/* Texte de présentation */}
             <div className="text-center md:text-left">
               <h1 className="text-4xl font-bold text-[#222222] mb-6 leading-tight animate-slide-up">
-                Bienvenue ! <span className="text-[#b97a57]">Je suis Elsaa.</span>
+                Bienvenue ! <span className="text-[#b97a57]">Je suis Elsa.</span>
               </h1>
               <p className="text-xl text-[#444444] leading-relaxed">
                 Après plusieurs années passées dans la cuisine, j'ai décidé de me réinventer. Aujourd'hui, je me passionne pour le développement web et je suis à la recherche d'une équipe dynamique pour partager mes compétences et relever de nouveaux défis ensemble.
