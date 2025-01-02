@@ -1,143 +1,124 @@
 "use client";
-import { useState, useEffect } from 'react';
-import "./styles/style.css";
+import { useState, useEffect } from "react";
 import { NEST_API_BASE_URL } from "./config";
 
-type Parcours = {
+type Formation = {
   _id?: string;
-  entreprise: string;
-  startDate: string;
-  endDate: string;
-  domaine: string;
+  title: string;
+  location: string;
+  period: string;
 };
 
-export default function ManageParcours() {
-  const [parcours, setParcours] = useState<Parcours[]>([]);
-  const [formData, setFormData] = useState<Parcours>({
-    entreprise: '',
-    startDate: '',
-    endDate: '',
-    domaine: '',
+export default function ManageFormations() {
+  const [formations, setFormations] = useState<Formation[]>([]);
+  const [formData, setFormData] = useState<Formation>({
+    title: "",
+    location: "",
+    period: "",
   });
-  const [isEditing, setIsEditing] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    const fetchParcours = async () => {
+    const fetchFormations = async () => {
+      setLoading(true); // Start loading when fetching
       try {
         const res = await fetch(`${NEST_API_BASE_URL}/parcours`);
         if (!res.ok) throw new Error(`Erreur: ${res.status}`);
         const data = await res.json();
-        setParcours(data);
+        setFormations(data);
       } catch (error) {
+        setError("Erreur lors de la récupération des formations.");
         console.error("Erreur lors de la récupération des parcours :", error);
       }
+      setLoading(false); // Stop loading after fetching
     };
-  
-    fetchParcours();
+
+    fetchFormations();
   }, []);
 
-  // Gérer le formulaire
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Ajouter ou mettre à jour un parcours
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const method = isEditing ? 'PUT' : 'POST';
-    const endpoint = isEditing ? `/api/v1/parcours/${isEditing}` : '/api/v1/parcours';
+    setLoading(true); // Show loading indicator when submitting
+    setError(""); // Reset previous errors
 
-    const response = await fetch(endpoint, {
-      method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const res = await fetch(`${NEST_API_BASE_URL}/parcours`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    if (response.ok) {
-      const updatedParcours = await response.json();
-      setParcours(updatedParcours);
-      setFormData({ entreprise: '', startDate: '', endDate: '', domaine: '' });
-      setIsEditing(null);
+      if (!res.ok) throw new Error("Erreur lors de l'ajout de la formation");
+
+      const newFormation = await res.json();
+      setFormations([...formations, newFormation]); // Add new formation to the list
+      setFormData({ title: "", location: "", period: "" }); // Reset form
+    } catch (error) {
+      setError("Erreur lors de l'ajout de la formation.");
+      console.error("Erreur lors de l'ajout de la formation :", error);
     }
+    setLoading(false); // Hide loading indicator
   };
 
-  // Supprimer un parcours
-  const handleDelete = async (id: string) => {
-    const response = await fetch(`/api/v1/parcours/${id}`, { method: 'DELETE' });
-    if (response.ok) {
-      setParcours(parcours.filter((p) => p._id !== id));
-    }
-  };
-
-  // Pré-remplir le formulaire pour modifier un parcours
-  const handleEdit = (parcoursToEdit: Parcours) => {
-    setFormData(parcoursToEdit);
-    setIsEditing(parcoursToEdit._id || null);
-  };
-  
   return (
-    <div className="container">
-      <h1 className="title">Gestion des parcours</h1>
+    <div>
+      <h1>Gestion des formations</h1>
 
-      {/* Formulaire pour ajouter ou modifier */}
-      <form onSubmit={handleSubmit} className="form">
+      {/* Form to add a new formation */}
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="entreprise"
-          placeholder="Entreprise"
-          value={formData.entreprise || ''}
+          name="title"
+          placeholder="Titre"
+          value={formData.title || ""}
           onChange={handleChange}
           required
-          className="input"
-        />
-        <input
-          type="date"
-          name="startDate"
-          value={formData.startDate || ''}
-          onChange={handleChange}
-          required
-          className="input"
-        />
-        <input
-          type="date"
-          name="endDate"
-          value={formData.endDate || ''}
-          onChange={handleChange}
-          required
-          className="input"
         />
         <input
           type="text"
-          name="domaine"
-          placeholder="Domaine"
-          value={formData.domaine || ''}
+          name="location"
+          placeholder="Lieu"
+          value={formData.location || ""}
           onChange={handleChange}
           required
-          className="input"
         />
-        <button type="submit" className="button">{isEditing ? 'Modifier' : 'Ajouter'}</button>
+        <input
+          type="text"
+          name="period"
+          placeholder="Période"
+          value={formData.period || ""}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Ajout en cours..." : "Ajouter"}
+        </button>
       </form>
 
-      {/* Liste des parcours */}
-      <table className="table">
-        
-      <tbody>
-  {parcours.map((p, index) => (
-    <tr key={p._id || index}>
-      <td>{p.entreprise}</td>
-      <td>{new Date(p.startDate).toLocaleDateString()}</td>
-      <td>{new Date(p.endDate).toLocaleDateString()}</td>
-      <td>{p.domaine}</td>
-      <td>
-        <button onClick={() => handleEdit(p)} className="button-edit">Modifier</button>
-        <button onClick={() => handleDelete(p._id || '')} className="button-delete">Supprimer</button>
-      </td>
-    </tr>
-  ))}
-</tbody>
+      {/* Error message */}
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
-      </table>
+      {/* List of formations */}
+      <ul>
+        {formations.map((formation) => (
+          <li key={formation._id || formation.title}>
+            {/* Use _id for key, fallback to title if not available */}
+            {formation.title} - {formation.location} ({formation.period})
+          </li>
+        ))}
+      </ul>
+
+      {/* Loading indicator */}
+      {loading && <p>Chargement...</p>}
     </div>
   );
 }
+
+
+
 
