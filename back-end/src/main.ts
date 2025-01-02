@@ -7,12 +7,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api/v1');  // Préfixe global pour toutes les routes
   app.enableCors({
-    origin: ['https://portfolioo-22.vercel.app','http://localhost:3000','https://protective-barbee-elsa-tanguy-projects-1a18647e.koyeb.app','https://elsatanguy.com/'],  // Frontend URL
+    origin: ['https://portfolioo-22.vercel.app','http://localhost:3000','http://localhost:3001','https://protective-barbee-elsa-tanguy-projects-1a18647e.koyeb.app','https://elsatanguy.com/'],  // Frontend URL
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept',
     credentials: true,
   });
-  await app.listen(port, )
+  await app.listen(port)
 }
 
 bootstrap();
