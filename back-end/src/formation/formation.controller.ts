@@ -1,21 +1,31 @@
-// formation.controller.ts
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
 import { FormationService } from './formation.service';
 
-@Controller('formations') // La route commence par /formations
+@Controller('formations')
 export class FormationController {
   constructor(private readonly formationService: FormationService) {}
 
-  @Get() // Gère la requête GET sur /formations
+  @Get() 
   async getAllFormations() {
-    return this.formationService.findAll(); // Récupère toutes les formations
+    return this.formationService.findAll();
   }
 
-  @Post() // Gère la requête POST pour ajouter une nouvelle formation
+  @Post() 
   async createFormation(@Body() createFormationDto: { title: string; location: string; period: string }) {
-    return this.formationService.create(createFormationDto); // Crée une nouvelle formation
+    return this.formationService.create(createFormationDto);
+  }
+
+  @Put(':id') // Mise à jour d'une formation existante
+  async updateFormation(@Param('id') id: string, @Body() updateFormationDto: { title: string; location: string; period: string }) {
+    return this.formationService.update(id, updateFormationDto);
+  }
+
+  @Delete(':id') // Suppression d'une formation
+  async deleteFormation(@Param('id') id: string) {
+    return this.formationService.remove(id);
   }
 }
+
 
 
 

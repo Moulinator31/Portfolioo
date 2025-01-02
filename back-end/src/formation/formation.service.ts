@@ -28,6 +28,15 @@ export class FormationService {
   async findAll(): Promise<Formation[]> {
     return this.formationModel.find().exec();
   }
+  
+  async update(id: string, updateFormationDto: { title: string; location: string; period: string }): Promise<Formation> {
+    return this.formationModel.findByIdAndUpdate(id, updateFormationDto, { new: true }).exec();
+  }
+
+  // Suppression d'une formation
+  async remove(id: string): Promise<void> {
+    await this.formationModel.findByIdAndDelete(id).exec();
+  }
 
   // Méthode pour créer une nouvelle formation
   async create(createFormationDto: { title: string; location: string; period: string }): Promise<Formation> {

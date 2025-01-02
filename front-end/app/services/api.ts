@@ -50,19 +50,6 @@ export const sendContactMessage = async (name: string, email: string, message: s
     throw error;
   }
 };
-// back-office.// back-office/pages/api/parcours.ts
-
-
-export const getParcoursData = async () => {
-  try {
-    const response = await fetch(`${NEST_API_BASE_URL}/parcours`);
-    if (!response.ok) throw new Error(`Erreur API NestJS: ${response.status}`);
-    return response.json(); // Retourne les données
-  } catch (error) {
-    console.error('Erreur lors de la récupération des parcours:', error);
-    throw error;
-  }
-};
 
 
 

@@ -4,7 +4,6 @@ import { ProjectModule } from './project/project.module';
 import { FormationModule } from './formation/formation.module';
 import { ContactModule } from './contact/contact.module';
 import { ProjectService } from './project/project.service';
-import { ParcoursModule } from './service/parcours.module';
 
 @Module({
   imports: [
@@ -12,7 +11,6 @@ import { ParcoursModule } from './service/parcours.module';
     ProjectModule,
     FormationModule,
     ContactModule,
-    ParcoursModule,
   ],
 })
 export class AppModule implements OnModuleInit {

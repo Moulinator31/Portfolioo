@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import { NEST_API_BASE_URL } from "./config";
+import { FaEdit, FaTrashAlt } from "react-icons/fa"; // Importation des icônes
+
+export const NEST_API_BASE_URL = 'http://localhost:8000/api/v1';
 
 type Formation = {
   _id?: string;
@@ -21,9 +23,9 @@ export default function ManageFormations() {
 
   useEffect(() => {
     const fetchFormations = async () => {
-      setLoading(true); // Start loading when fetching
+      setLoading(true);
       try {
-        const res = await fetch(`${NEST_API_BASE_URL}/parcours`);
+        const res = await fetch(`${NEST_API_BASE_URL}/formations`);
         if (!res.ok) throw new Error(`Erreur: ${res.status}`);
         const data = await res.json();
         setFormations(data);
@@ -31,7 +33,7 @@ export default function ManageFormations() {
         setError("Erreur lors de la récupération des formations.");
         console.error("Erreur lors de la récupération des parcours :", error);
       }
-      setLoading(false); // Stop loading after fetching
+      setLoading(false);
     };
 
     fetchFormations();
@@ -43,11 +45,11 @@ export default function ManageFormations() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true); // Show loading indicator when submitting
-    setError(""); // Reset previous errors
+    setLoading(true);
+    setError("");
 
     try {
-      const res = await fetch(`${NEST_API_BASE_URL}/parcours`, {
+      const res = await fetch(`${NEST_API_BASE_URL}/formations`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -56,68 +58,112 @@ export default function ManageFormations() {
       if (!res.ok) throw new Error("Erreur lors de l'ajout de la formation");
 
       const newFormation = await res.json();
-      setFormations([...formations, newFormation]); // Add new formation to the list
-      setFormData({ title: "", location: "", period: "" }); // Reset form
+      setFormations([...formations, newFormation]);
+      setFormData({ title: "", location: "", period: "" });
     } catch (error) {
       setError("Erreur lors de l'ajout de la formation.");
       console.error("Erreur lors de l'ajout de la formation :", error);
     }
-    setLoading(false); // Hide loading indicator
+    setLoading(false);
+  };
+
+  const handleDelete = async (id: string) => {
+    setLoading(true);
+    try {
+      const res = await fetch(`${NEST_API_BASE_URL}/formations/${id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Erreur lors de la suppression");
+      setFormations(formations.filter((formation) => formation._id !== id));
+    } catch (error) {
+      setError("Erreur lors de la suppression de la formation.");
+      console.error("Erreur lors de la suppression :", error);
+    }
+    setLoading(false);
+  };
+
+  const handleEdit = (formation: Formation) => {
+    setFormData({
+      title: formation.title,
+      location: formation.location,
+      period: formation.period,
+    });
   };
 
   return (
-    <div>
-      <h1>Gestion des formations</h1>
+    <div className="back-office-container">
+      <h1>Back Office des Formations</h1>
+      
+      {/* Formulaire pour ajouter une formation */}
+      <section className="formation-form-section">
+        <h2>Ajouter ou Modifier une Formation</h2>
+        <form onSubmit={handleSubmit} className="formation-form">
+          <input
+            type="text"
+            name="title"
+            placeholder="Titre de la formation"
+            value={formData.title || ""}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="location"
+            placeholder="Lieu de la formation"
+            value={formData.location || ""}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="period"
+            placeholder="Période de la formation"
+            value={formData.period || ""}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" disabled={loading}>
+            {loading ? "Chargement..." : "Enregistrer"}
+          </button>
+        </form>
+        {error && <p className="error">{error}</p>}
+      </section>
 
-      {/* Form to add a new formation */}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Titre"
-          value={formData.title || ""}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="location"
-          placeholder="Lieu"
-          value={formData.location || ""}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="period"
-          placeholder="Période"
-          value={formData.period || ""}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Ajout en cours..." : "Ajouter"}
-        </button>
-      </form>
-
-      {/* Error message */}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {/* List of formations */}
-      <ul>
-        {formations.map((formation) => (
-          <li key={formation._id || formation.title}>
-            {/* Use _id for key, fallback to title if not available */}
-            {formation.title} - {formation.location} ({formation.period})
-          </li>
-        ))}
-      </ul>
-
-      {/* Loading indicator */}
-      {loading && <p>Chargement...</p>}
+      {/* Liste des formations */}
+      <section className="formation-list-section">
+        <h2>Liste des Formations</h2>
+        <ul className="formation-list">
+          {formations.map((formation) => (
+            <li key={formation._id || formation.title} className="formation-item">
+              <div className="formation-info">
+                <p>{formation.title}</p>
+                <span>{formation.location} ({formation.period})</span>
+              </div>
+              <div className="actions">
+                <button
+                  className="edit-btn"
+                  onClick={() => handleEdit(formation)}
+                >
+                  <FaEdit />
+                </button>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(formation._id || "")}
+                >
+                  <FaTrashAlt />
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+        {loading && <p>Chargement...</p>}
+      </section>
     </div>
   );
 }
+
+
+
 
 
 
