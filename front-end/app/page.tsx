@@ -51,43 +51,44 @@ export default function Home() {
         <Header />
         {/* Section de présentation */}
         <section
-          id="presentation"
-          className="relative flex items-center justify-center h-screen bg-gradient-to-r from-[#F8DCCB] via-[#FFE5D9] to-[#F3E0D3] overflow-hidden border-b-8 border-[#b97a57]"
-        >
-          {/* Arrière-plan décoratif */}
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-[-100px] left-[-150px] w-[300px] h-[300px] bg-[#FFD3B6] rounded-full blur-3xl opacity-50 animate-clouds"></div>
-            <div className="absolute bottom-[-150px] right-[-200px] w-[400px] h-[400px] bg-[#B8D8D8] rounded-full blur-3xl opacity-50 animate-clouds"></div>
-            <div className="absolute top-[20%] left-[60%] w-[200px] h-[200px] bg-[#FFC1A1] rounded-full blur-3xl opacity-60 animate-clouds"></div>
-          </div>
+  id="presentation"
+  className="relative flex flex-col items-center justify-center h-auto md:h-screen bg-gradient-to-r from-[#F8DCCB] via-[#FFE5D9] to-[#F3E0D3] overflow-hidden border-b-8 border-[#b97a57] px-4 py-8"
+>
+  {/* Arrière-plan décoratif */}
+  <div className="absolute inset-0 z-0">
+    <div className="absolute top-[-50px] left-[-100px] w-[150px] h-[150px] bg-[#FFD3B6] rounded-full blur-2xl opacity-50 animate-clouds md:w-[300px] md:h-[300px]"></div>
+    <div className="absolute bottom-[-100px] right-[-150px] w-[200px] h-[200px] bg-[#B8D8D8] rounded-full blur-2xl opacity-50 animate-clouds md:w-[400px] md:h-[400px]"></div>
+    <div className="absolute top-[10%] left-[50%] w-[100px] h-[100px] bg-[#FFC1A1] rounded-full blur-2xl opacity-60 animate-clouds md:w-[200px] md:h-[200px]"></div>
+  </div>
 
-          {/* Carte de présentation */}
-          <div className="relative z-10 flex flex-col md:flex-row items-center bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8 md:p-12 gap-8 max-w-5xl animate-fade-in-y">
-            {/* Image de présentation */}
-            <div className="flex-shrink-0">
-              <Image
-                width={500}
-                height={500}
-                src="/presentation_me.png"
-                alt="Photo d'Elsa"
-                className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-[#b97a57] hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+  {/* Carte de présentation */}
+  <div className="relative z-10 flex flex-col items-center bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6 md:p-12 gap-6 max-w-lg md:max-w-5xl animate-fade-in-y md:flex-row">
+    {/* Image de présentation */}
+    <div className="flex-shrink-0">
+      <Image
+        width={300}
+        height={300}
+        src="/presentation_me.png"
+        alt="Photo d'Elsa"
+        className="w-40 h-40 rounded-full object-cover shadow-lg border-4 border-[#b97a57] hover:scale-105 transition-transform duration-300 md:w-64 md:h-64"
+      />
+    </div>
 
-            {/* Texte de présentation */}
-            <div className="text-center md:text-left">
-              <h1 className="text-4xl font-bold text-[#222222] mb-6 leading-tight animate-slide-up">
-                Bienvenue ! <span className="text-[#b97a57]">Je suis Elsa.</span>
-              </h1>
-              <p className="text-xl text-[#444444] leading-relaxed">
-                Après plusieurs années passées dans la cuisine, j'ai décidé de me réinventer. Aujourd'hui, je me passionne pour le développement web et je suis à la recherche d'une équipe dynamique pour partager mes compétences et relever de nouveaux défis ensemble.
-              </p>
-              <p className="text-xl text-[#444444] leading-relaxed mt-4">
-                Mon objectif : créer des interfaces modernes, accessibles et engageantes, tout en continuant à apprendre et à grandir avec mes futurs collègues.
-              </p>
-            </div>
-          </div>
-      </section>
+    {/* Texte de présentation */}
+    <div className="text-center md:text-left">
+      <h1 className="text-2xl font-bold text-[#222222] mb-4 leading-snug md:text-4xl animate-slide-up">
+        Bienvenue ! <span className="text-[#b97a57]">Je suis Elsa.</span>
+      </h1>
+      <p className="text-sm text-[#444444] leading-relaxed md:text-xl">
+        Après plusieurs années passées dans la cuisine, j'ai décidé de me réinventer. Aujourd'hui, je me passionne pour le développement web et je suis à la recherche d'une équipe dynamique pour partager mes compétences et relever de nouveaux défis ensemble.
+      </p>
+      <p className="text-sm text-[#444444] leading-relaxed mt-4 md:text-xl">
+        Mon objectif : créer des interfaces modernes, accessibles et engageantes, tout en continuant à apprendre et à grandir avec mes futurs collègues.
+      </p>
+    </div>
+  </div>
+</section>
+
 
 
       <h2 id="mes-projets" className="text-center mt-12 text-[#333333] text-3xl petit-formal-script-regular animate-fade-in">
