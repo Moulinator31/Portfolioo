@@ -72,7 +72,7 @@ body {
 }
 
 .animate-fade-in {
-  animation: fadeIn 2s ease-in-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 @keyframes slideUp {
@@ -88,7 +88,7 @@ body {
 }
 
 .animate-slide-up {
-  animation: slideUp 1.5s ease-in-out forwards;
+  animation: slideUp 1s ease-in-out forwards;
 }
 
 /* Animation d'apparition avec déplacement Y */
@@ -105,7 +105,7 @@ body {
 }
 
 .animate-fade-in-y {
-  animation: fadeInY 0.7s ease-in-out forwards;
+  animation: fadeInY 1s ease-in-out forwards;
 }
 
 /* Transition des slides */
@@ -159,19 +159,19 @@ body {
 
 /* Classes pour animations */
 .slide-in-right {
-  animation: slideInRight 0.7s ease-in-out;
+  animation: slideInRight 0s ease-in-out;
 }
 
 .slide-out-left {
-  animation: slideOutLeft 0.7s ease-in-out;
+  animation: slideOutLeft 0s ease-in-out;
 }
 
 .slide-in-left {
-  animation: slideInLeft 0.7s ease-in-out;
+  animation: slideInLeft 0s ease-in-out;
 }
 
 .slide-out-right {
-  animation: slideOutRight 0.7s ease-in-out;
+  animation: slideOutRight 0s ease-in-out;
 }
 
 /* Animation pour le nuage flottant */
