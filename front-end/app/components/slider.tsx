@@ -40,52 +40,58 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
   };
 
   return (
-    <div className="carousel-container flex justify-center items-center py-12 relative">
+    <div className="carousel-container flex flex-col justify-center items-center py-12 relative">
+      {/* Bouton gauche */}
       <button
         onClick={prevSlide}
-        className="absolute left-5 z-10 p-2 bg-gray-800 rounded-full opacity-70 hover:opacity-100 text-white"
+        className="absolute left-5 z-10 p-2 bg-gray-800 rounded-full opacity-70 hover:opacity-100 text-white md:left-10"
       >
         <FaArrowLeft />
       </button>
 
+      {/* Slide principal */}
       <div
-        className={`carousel-slide w-full max-w-4xl overflow-hidden rounded-xl shadow-lg ${animationClass}`}
+        className={`carousel-slide w-full max-w-lg sm:max-w-xl md:max-w-4xl overflow-hidden rounded-xl shadow-lg ${animationClass}`}
         onAnimationEnd={() => setAnimationClass("")}
       >
+        {/* Image */}
         <Image
-          src={currentProject.image || "/placeholder.png"} // Placeholder si l'image est manquante
+          src={currentProject.image || "/placeholder.png"}
           alt={currentProject.title || "Projet"}
-          className="w-full object-cover h-96"
+          className="w-full object-cover h-64 sm:h-80 md:h-96"
           width={800}
           height={400}
         />
 
-        <div className="carousel-overlay bg-white p-6 shadow-lg mt-4 rounded-b-xl">
-          <h3 className="text-2xl font-semibold text-gray-800">
+        {/* Overlay texte */}
+        <div className="carousel-overlay bg-white p-4 sm:p-6 shadow-lg mt-4 rounded-b-xl">
+          <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800">
             {currentProject.title || "Titre non disponible"}
           </h3>
-          <p className="text-gray-500 mt-2">
+          <p className="text-sm sm:text-base text-gray-500 mt-2">
             {currentProject.description || "Description non disponible"}
           </p>
-          <div className="flex flex-wrap space-x-3 mt-4">
+
+          {/* Technologies utilisées */}
+          <div className="flex flex-wrap gap-2 mt-4">
             {currentProject.technologies?.map((tech) => (
               <span
                 key={tech}
-                className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-medium"
+                className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs sm:text-sm font-medium"
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          {/* Section des boutons repositionnés en bas */}
-          <div className="section-buttons mt-6 space-x-4">
+          {/* Boutons */}
+          <div className="section-buttons mt-4 space-y-2 sm:space-y-0 sm:space-x-4">
             {currentProject.repositoryUrl && (
               <a
                 href={currentProject.repositoryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button-74"
+                className="button-74 w-full sm:w-auto text-center"
               >
                 Voir le Repository
               </a>
@@ -95,20 +101,19 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
                 href={currentProject.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button-74"
+                className="button-74 w-full sm:w-auto text-center"
               >
                 Voir le Site en Ligne
               </a>
             )}
           </div>
         </div>
-
-
       </div>
 
+      {/* Bouton droit */}
       <button
         onClick={nextSlide}
-        className="absolute right-5 z-10 p-2 bg-gray-800 rounded-full opacity-70 hover:opacity-100 text-white"
+        className="absolute right-5 z-10 p-2 bg-gray-800 rounded-full opacity-70 hover:opacity-100 text-white md:right-10"
       >
         <FaArrowRight />
       </button>
@@ -117,6 +122,5 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
 };
 
 export default Slider;
-
 
 
