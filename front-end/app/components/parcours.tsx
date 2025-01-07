@@ -31,7 +31,7 @@ function Parcours() {
   }, []);
 
   return (
-    <section id="Mon parcours" className="py-16 px-4 bg-[#1F1F1F]">
+    <section id="mon-parcours" className="py-16 px-4 bg-[#1F1F1F]">
       <div className="max-w-5xl mx-auto text-[#D8BFAA]">
         <h2 className="text-3xl font-semibold text-center mb-12 petit-formal-script-regular">
           Mon Parcours
