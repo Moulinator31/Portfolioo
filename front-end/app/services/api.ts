@@ -1,5 +1,4 @@
 import { API_BASE_URL } from "./config"; // Importer le préfixe d'API
-import { NEST_API_BASE_URL } from "./config";
 
 
 export const fetchProjects = async () => {
