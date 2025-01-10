@@ -14,9 +14,9 @@ export class ProjectService {
       const projects = [
         {
           title: "Projet 724",
-          description: "Utilisation de JavaScript et TailwindCSS",
+          description: "Utilisation de React et React Developer Tools",
           image: "/projet_724.png",
-          technologies: ["JavaScript", "TailwindCSS"],
+          technologies: ["React", "React Developer Tools"],
           repositoryUrl: "https://github.com/Moulinator31/Debuggez-une-application-React.JS.git",
         },
         {
@@ -29,9 +29,9 @@ export class ProjectService {
         },
         {
           title: "Projet Kasa",
-          description: "Application de gestion avec Vue et Firebase",
+          description: "Application de gestion avec ReactJS et Sass",
           image: "/projet_Kasa.png",
-          technologies: ["Vue", "Firebase"],
+          technologies: ["ReactJS", "Sass"],
           repositoryUrl: "https://github.com/Moulinator31/projet-8-kasa-openclassrooms.git",
         },
         {
@@ -44,9 +44,9 @@ export class ProjectService {
         },
         {
           title: "Projet Nina",
-          description: "Application de gestion avec Vue et Firebase",
+          description: "Application de gestion avec Javascript et SEO",
           image: "/projet_Nina.png",
-          technologies: ["Vue", "Firebase"],
+          technologies: ["Javascript", "SEO"],
           repositoryUrl: "https://github.com/Moulinator31/ninacarducci.github.io.git",
         },
         
