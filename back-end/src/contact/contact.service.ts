@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 @Injectable()
-export class ContactService { // Change le nom pour correspondre à celui du fichier si nécessaire
+export class ContactService {
   private transporter: nodemailer.Transporter;
 
   constructor() {

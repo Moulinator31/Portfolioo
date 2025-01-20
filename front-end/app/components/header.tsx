@@ -28,7 +28,7 @@ function Header() {
         <li><a href="#mes-projets" className="hover:text-[#b97a57]">Mes projets</a></li>
         <li><a href="#mon-parcours" className="hover:text-[#b97a57]">Mon parcours</a></li>
         <li><a href="#contact" className="hover:text-[#b97a57]">Contact</a></li>
-        <li><a href="/Elsa Tanguy_________.pdf"  download="Mon_CV" className="bg-[#b97a57] text-white py-2 px-4 rounded hover:bg-[#dec9b0] transition duration-300">Télécharger mon CV</a></li>
+        <li><a href="/Elsa Tanguy.pdf"  download="Mon_CV" className="bg-[#b97a57] text-white py-2 px-4 rounded hover:bg-[#dec9b0] transition duration-300">Télécharger mon CV</a></li>
       </ul>
 
       {/* Bouton Hamburger (Mobile) */}
@@ -48,7 +48,7 @@ function Header() {
             <li><a href="#mes-projets" onClick={toggleMenu} className="hover:text-[#b97a57]">Mes projets</a></li>
             <li><a href="#mon-parcours" onClick={toggleMenu} className="hover:text-[#b97a57]">Mon parcours</a></li>
             <li><a href="#contact" onClick={toggleMenu} className="hover:text-[#b97a57]">Contact</a></li>
-            <li><a href="/Elsa Tanguy_________.pdf" onClick={toggleMenu}  download="Mon_CV" className="bg-[#b97a57] text-white py-2 px-4 rounded hover:bg-[#dec9b0] transition duration-300">Télécharger mon CV</a></li>
+            <li><a href="/Elsa Tanguy.pdf" onClick={toggleMenu}  download="Mon_CV" className="bg-[#b97a57] text-white py-2 px-4 rounded hover:bg-[#dec9b0] transition duration-300">Télécharger mon CV</a></li>
           </ul>
         </div>
       )}

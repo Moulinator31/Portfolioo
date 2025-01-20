@@ -15,7 +15,9 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api/v1');  // Préfixe global pour toutes les routes
   app.enableCors({
-    origin: process.env.FRONTEND_URL.split(','),  // Autoriser plusieurs URL
+    origin: ['http://localhost:3000', // URL locale de votre front-end
+      'https://portfolioo-22.vercel.app',
+      'http://localhost:3001'], // URL de production
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept',
     credentials: true,

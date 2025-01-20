@@ -3,7 +3,7 @@ import { Module, OnModuleInit } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { FormationController } from './formation.controller';
 import { FormationService } from './formation.service';
-import { Formation, FormationSchema } from './formation.shema';
+import { FormationSchema } from './formation.shema';
 
 @Module({
   imports: [

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ManageParcours from "./parcours";
 export default function Home() {
   return (

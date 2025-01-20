@@ -8,6 +8,7 @@ export class ProjectService {
   constructor(@InjectModel('Project') private readonly projectModel: Model<Project>) {}
 
   async seedData() {
+    await this.projectModel.deleteMany({});
     const existingProjects = await this.projectModel.find();
 
     if (existingProjects.length === 0) {
