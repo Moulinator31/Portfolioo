@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Le Monde Digital d'Elsa",
     description: "Explorez le portfolio digital d'Elsa : intégration web et design moderne.",
-    url: "https://votre-site.com", // Mettez votre URL ici
+    url: "https://portfolioo-22.vercel.app/", // Mettez votre URL ici
     siteName: "Le Monde Digital d'Elsa",
     images: [
       {
-        url: "https://votre-site.com/image-de-votre-portfolio.png", // Remplacez par une image d'aperçu
+        url: "https://portfolioo-22.vercel.app/", // Remplacez par une image d'aperçu
         width: 1200,
         height: 630,
         alt: "Le Monde Digital d'Elsa",
